@@ -74,8 +74,13 @@
 
 					</rich:column>
 
-					 <rich:column colspan="2">
-        					<h:outputText value="#{users.roles}" />
+					 <rich:column >
+					 	<f:facet name="header">User Roles</f:facet>
+					        <ui:repeat value="#{users.roles}" var="value">
+   								 #{value.rolename} <br />
+							</ui:repeat>
+						<f:facet name="footer">User Roles</f:facet>
+        					
     				</rich:column>
 
 
