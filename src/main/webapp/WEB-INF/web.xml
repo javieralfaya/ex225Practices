@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+      <form-login-page>/faces/login.xhtml</form-login-page>
+      <form-error-page>/faces/login.xhtml?error=true</form-error-page>
+    </form-login-config>
+  </login-config>
+  <security-role>
+    <role-name>admin</role-name>
+  </security-role>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Public Area</web-resource-name>
+      <url-pattern>/css/*</url-pattern>
+      <url-pattern>/common/*</url-pattern>
+      <url-pattern>/js/*</url-pattern>
+      <url-pattern>/resources/*</url-pattern>
+      <url-pattern>/javax.faces.resource/*</url-pattern>
+      <url-pattern>/faces/*</url-pattern>
+      <url-pattern>/rfRes/*</url-pattern>
+      <url-pattern>/faces/rfRes/*</url-pattern>
+      <http-method>DELETE</http-method>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+      <http-method>PUT</http-method>
+    </web-resource-collection>
+  </security-constraint>
+  <security-constraint>
+    <display-name>Security Config</display-name>
+    <web-resource-collection>
+      <web-resource-name>Protected Zone</web-resource-name>
+      <url-pattern>/protected/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <servlet>
+    <display-name>FindUser</display-name>
+    <servlet-name>FindUser</servlet-name>
+    <servlet-class>ws.FindUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindUser</servlet-name>
+    <url-pattern>/FindUser</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="/protected/template/template.xhtml">
+
+		<ui:define name="content">
+
+			<rich:panel>
+
+				<f:facet name="header">
+
+				</f:facet>
+
+
+
+				<fieldset title="Validation JSF examples">
+
+					<h:outputText value="** Welcome ex225 demo - Validator Examples **" />
+					<h:form>
+						<p>
+							<h:outputText
+								value="Next field is validate into Backing Bean Method: invoiceController.validateCompanyName- Try write UNISYS "
+								style="color:blue" />
+
+						</p>
+						<p>
+							<h:outputLabel for="companyMane" value="Company mane:" />
+
+							<h:inputText value="#{invoice.companyName}"
+								validator="#{invoiceController.validateCompanyName}"
+								id="companyName">
+							</h:inputText>
+							<h:message for="companyName" style="color:red" />
+						</p>
+						<p>
+							<h:outputText
+								value="Next field is validate as Required into h:inputText as required = true and requiredMessage "
+								style="color:blue" />
+
+						</p>
+						<p>
+							<h:outputLabel for="contactName" value="Contact mane:" />
+
+							<h:inputText value="#{invoice.contactName}" required="true"
+								requiredMessage="Contact mane is mandatory" id="contactName">
+							</h:inputText>
+							<h:message for="contactName" style="color:red" />
+						</p>
+
+						<p>
+							<h:outputText
+								value="Next field is validate as Range Validator into f:validateDoubleRange and also as required = true and requiredMessage and also is validate JSR-303 "
+								style="color:blue" />
+
+						</p>
+						<p>
+							<h:outputLabel for="amount" value="Amount:" />
+
+							<h:inputText value="#{invoice.amount}" required="true"
+								requiredMessage="Amount is mandatory" id="amount">
+
+								<f:validateDoubleRange minimum="0.01" maximum="100000"></f:validateDoubleRange>
+
+							</h:inputText>
+							<h:message for="amount" style="color:red" />
+						</p>
+
+						<p>
+							<h:outputText
+								value="Next field is validate as Range Validator into f:validateLongRange and also as required = true and requiredMessage and also is validate JSR-303 "
+								style="color:blue" />
+
+						</p>
+						<p>
+							<h:outputLabel for="numbersOfItemst" value="Number of items:" />
+
+							<h:inputText value="#{invoice.numbersOfItems}" required="true"
+								requiredMessage="Number of items is mandatory"
+								id="numbersOfItems">
+
+								<f:validateLongRange minimum="1" maximum="10"></f:validateLongRange>
+
+							</h:inputText>
+							<h:message for="numbersOfItems" style="color:red" />
+						</p>
+
+
+
+						<p>
+							<h:commandButton type="submit"
+								action="#{invoiceController.saveInvoice()}"
+								value="Create Invoice"></h:commandButton>
+
+						</p>
+					</h:form>
+				</fieldset>
+
+
+
+
+			</rich:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

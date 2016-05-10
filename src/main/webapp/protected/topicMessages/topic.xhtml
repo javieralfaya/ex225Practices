@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head />
+
+<ui:composition template="/protected/template/template.xhtml">
+
+	<ui:define name="content">
+		<h:body>
+		
+				
+				<rich:panel style="float: left;">
+					<f:facet name="header">
+        				Send a message to topic
+        			</f:facet>
+					<h:form>
+						<div style="float: left;">
+							<h:inputTextarea id="message" cols="50" rows="5" value="#{senderColaSaludosTopic.message}" required="true" requiredMessage="Messge text is mandatory"/>
+							<rich:message for="message"></rich:message>
+						</div>
+						<div style="clear: both;" />
+						<div style="float: right;">
+							<a4j:commandButton action="#{senderColaSaludosTopic.send()}"
+								render="@form poll" value="Send" />
+						</div>
+					</h:form>
+				</rich:panel>
+
+				<!-- Polling example. -->
+				<a4j:region>
+					<h:form>
+						<a4j:poll id="poll" render="poll list" />
+						<!-- Note "list" here. -->
+					</h:form>
+				</a4j:region>
+
+				<rich:panel style="float: right; left: 100%;">
+					<f:facet name="header">
+        				Incoming messages
+        			</f:facet>
+					<rich:list id="list" rows="10"
+						value="#{messageListBackingBean.messages}" var="message">
+						<h:outputText value="#{message.timestamp} : #{message.text}" />
+					</rich:list>
+				</rich:panel>
+
+			
+        
+		</h:body>
+
+    
+
+	</ui:define>
+</ui:composition>
+
+</html>

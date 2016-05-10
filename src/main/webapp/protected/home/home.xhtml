@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    
+    <h:body>
+        <ui:composition template="/protected/template/template.xhtml">
+  
+       <ui:define name="content">
+				
+    <rich:panel>
+        
+        
+    
+	
+	<fieldset>
+	     <h:form>
+	         <h:panelGrid columns="2">
+		    	<h:outputText value="Validation Example" />
+		    	<h:commandLink action="/protected/invoices/invoices.xhtml" value=" - Example of all validation methods JSF Invoice Form Example" style="color:blue;"/>
+		    </h:panelGrid>
+		    <h:panelGrid columns="2">
+		   		 <h:outputText value="Conversation example RichFaces Invoice Form" />
+		    	<h:commandLink action="#{invoiceController.showInvoiceRF()}" value="- Example of all validation methods RichFaces Invoice Form Example" style="color:blue;" />
+		    </h:panelGrid>
+		    <h:panelGrid columns="2">
+		    	<h:outputText value="Conversation example RichFaces - Users Create Wizard" />
+		    	<h:commandLink action="/protected/createUserWizard/richfaces/startUserCreate.xhtml" value="Start User Wizar Conversation Example RichFaces" style="color:blue;" />
+		     </h:panelGrid>
+		     <h:panelGrid columns="2">
+		    	<h:outputText value="Conversation example - Users Create Wizard" />
+		    	<h:commandLink action="/protected/createUserWizard/startUserCreate.xhtml" value="Start User Wizar Conversation Example" style="color:blue;" />
+		    </h:panelGrid>   
+		     <h:panelGrid columns="2">
+		    	<h:outputText value="WSDL - SOA Service" />
+		    	<h:commandLink action="/protected/createUserWizard/startUserCreate.xhtml" value="WSDL" style="color:blue;"/>
+		    </h:panelGrid>     
+		     <h:panelGrid columns="2">
+		    	<h:outputText value="REST - SOA Service" />
+		    	<h:commandLink action="/protected/createUserWizard/startUserCreate.xhtml" value="REST example text-plain get user" style="color:blue;" />
+		    </h:panelGrid>  
+		     <h:panelGrid columns="2">
+		    	<h:outputText value="Send Message P2P" />
+		    	<h:commandLink action="/protected/producerconsumes/producerconsumer.xhtml" value="Send Message JMS" style="color:blue;" />
+		    </h:panelGrid>  
+		    
+		     <h:panelGrid columns="2">
+		    	<h:outputText value="Send Message Topic" />
+		    	<h:commandLink action="/protected/topicMessages/topic.xhtml" value="Send Message Topic Type" style="color:blue;" />
+		    </h:panelGrid>  
+		    
+		     
+	     </h:form>
+	    </fieldset>
+		
+	</rich:panel>
+ </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

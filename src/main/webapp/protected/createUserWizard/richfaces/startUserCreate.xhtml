@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="/protected/template/template.xhtml">
+
+		<ui:define name="content">
+			<rich:panel>
+				<f:facet name="header">
+           User Wizard
+        </f:facet>
+				<h:outputText
+					value="Welcome to User Wizard Creation example of CDI @ConverationScope"
+					style="color:blue" />
+
+				<fieldset>
+					<h:form>
+
+						<p>
+
+							<h:commandButton value="PRESS TO START USER WUIZAR CREATION"
+								action="#{userWizard.startConversationRichFaces()}" />
+
+
+
+						</p>
+
+
+					</h:form>
+
+				</fieldset>
+
+
+				<rich:dataTable var="users" value="#{usersList}">
+
+					<f:facet name="caption">
+
+						<h:outputText value="Users Table" />
+
+					</f:facet>
+
+					<f:facet name="header">
+
+						<h:outputText value="Users in database" />
+
+					</f:facet>
+
+
+					<rich:column>
+
+						<f:facet name="header">User Name</f:facet>
+
+						<h:outputText value="#{users.username}" />
+
+						<f:facet name="footer">User Name</f:facet>
+
+					</rich:column>
+
+					<rich:column>
+
+
+						<f:facet name="header">User Password</f:facet>
+
+						<h:outputText value="#{users.password}" />
+
+						<f:facet name="footer">User Password</f:facet>
+
+
+					</rich:column>
+
+
+
+
+
+				</rich:dataTable>
+
+
+
+			</rich:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

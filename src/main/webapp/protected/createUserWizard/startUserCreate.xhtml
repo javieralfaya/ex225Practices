@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="/protected/template/template.xhtml">
+
+		<ui:define name="content">
+			<rich:panel>
+				<f:facet name="header">
+           User Wizard
+        </f:facet>
+				<h:outputText
+					value="Welcome to User Wizard Creation example of CDI @ConverationScope"
+					style="color:blue" />
+			</rich:panel>
+			<fieldset>
+				<h:form>
+
+					<p>
+
+						<h:commandButton value="PRESS TO START USER WIZAR CREATION"
+							action="#{userWizard.startConversation()}" />
+
+
+
+					</p>
+
+
+				</h:form>
+
+			</fieldset>
+
+			<p>
+				<h:dataTable var="users" value="#{usersList}">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="UserName" />
+						</f:facet>
+						<h:outputText value="#{users.username}" />
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Password" />
+						</f:facet>
+
+						<h:outputText value="#{users.password}" />
+
+					</h:column>
+
+
+				</h:dataTable>
+
+			</p>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

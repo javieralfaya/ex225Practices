@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="/protected/template/template.xhtml">
+
+		<ui:define name="content">
+			<rich:panel>
+				<f:facet name="header">
+					<h:outputText value="User Wizard Step 2" style="color:blue" />
+				</f:facet>
+
+			</rich:panel>
+
+			<h:form>
+				<fieldset>
+					<p>
+						<rich:panel style="width:220px;">
+							<h:outputText value="User Name:" style="color:blue" />
+							<h:outputLabel value="#{userWizard.aUser.username}"
+								style="color:red" />
+						</rich:panel>
+
+					</p>
+
+					<p>
+						<rich:panel style="width:220px;">
+							<f:facet name="header">
+								<h:outputLabel value="*Password:" for="password" />
+							</f:facet>
+
+
+							<h:inputText value="#{userWizard.aUser.password}" required="true"
+								requiredMessage="Password is mandatory" id="password">
+							</h:inputText>
+
+
+							<rich:message for="password" />
+
+						</rich:panel>
+
+
+					</p>
+
+
+					<p>
+						<rich:panel style="width:220px;">
+							<f:facet name="header">
+								<h:outputText value="Select role for user" />
+							</f:facet>
+							<rich:select enableManualInput="true" required="true"
+								value="#{userWizard.userRole}"
+								requiredMessage="Role is Mandatory" id="role">
+								<f:selectItems value="#{listRoles}" var="role"
+									itemLabel="#{role.rolename}" itemValue="#{role.rolename}" />
+							</rich:select>
+							<rich:message for="role" />
+						</rich:panel>
+
+
+					</p>
+
+
+					<p>
+						<h:commandLink action="#{userWizard.startConversation()}"
+							value="---- Previous Step" immediate="true" />
+					</p>
+					<p>
+						<h:commandLink action="#{userWizard.finalStep()}"
+							value="Next Step ----" />
+					</p>
+
+					<p></p>
+
+				</fieldset>
+
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

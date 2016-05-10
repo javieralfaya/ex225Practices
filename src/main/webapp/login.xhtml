@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body>
+    <rich:panel>
+        <f:facet name="header">
+           Login example security JAAS - See configuration into web.xml (login-config and security)
+        </f:facet>
+
+		<fieldset>
+		<form action="j_security_check" method="post">
+		
+		      <h:panelGrid columns="3">
+		     	 User Name: <input type="text" name="j_username"/>
+		      </h:panelGrid>
+		       <h:panelGrid columns="3">
+		     	 User Password: <input type="password" name="j_password"/>
+		      </h:panelGrid>
+		      
+		       <h:panelGrid columns="2">
+		 
+      			<input type="submit" value="Login"/>
+      		 </h:panelGrid>
+
+		     
+		
+		</form>
+		</fieldset>
+		
+		<h:outputLabel value="User Name and/or Password is invalid"
+     rendered="#{param['error']}" style="color:red;" />
+	</rich:panel>
+</body> 
+</html>

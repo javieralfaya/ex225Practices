@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="/protected/template/template.xhtml">
+
+		<ui:define name="content">
+			<rich:panel>
+				<f:facet name="header">
+           User Wizard
+        </f:facet>
+				<h:outputText value="User Wizard Final Step" style="color:blue" />
+			</rich:panel>
+
+			<h:form>
+				<fieldset>
+					<p>
+						<h:outputText value="User Name:" style="color:blue" />
+						<h:outputLabel value="#{userWizard.aUser.username}"
+							style="color:red" />
+
+
+					</p>
+
+					<p>
+						<h:outputText value="User Password:" style="color:blue" />
+						<h:outputLabel value="#{userWizard.aUser.password}"
+							style="color:red" />
+
+
+					</p>
+
+
+
+					<p>
+						<h:commandLink action="#{userWizard.endConversation()}"
+							value="Create user and end" />
+					</p>
+
+
+				</fieldset>
+
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

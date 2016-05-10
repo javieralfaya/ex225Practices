@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    
+    <h:head>
+        <meta http-equiv="Content-Type" 
+              content="text/html; charset=UTF-8" />
+              <ui:param name="root" value="#{request.contextPath}" />
+              <link rel="stylesheet" type="text/css" href="#{root}/css/styles.css" />
+       
+        <title>EX225 - Javier Alfaya</title>
+    </h:head>
+    
+    <h:body>
+	<div id="container">
+		<div id="header">
+           		<h:outputText value="Welcome to EX225 Javier Alfaya Project"  /> 
+       	<rich:toolbar height="26px">
+            <rich:dropDownMenu mode="ajax">
+                <f:facet name="label">
+                    <h:panelGroup>
+                        <h:outputText value="Options" />
+                    </h:panelGroup>
+                </f:facet>
+                 <rich:menuItem label="No hace nada" action="http://localhost:8080/ex225/logout">
+                </rich:menuItem>
+                <rich:menuItem label="New" action="#{dropDownMenuBean.doNew}" icon="/images/icons/create_doc.gif">
+                </rich:menuItem>
+         
+ 
+            </rich:dropDownMenu>
+            </rich:toolbar>
+ 
+			 <h:form>
+					<h:commandLink value="Logout" onclick="window.location='/ex225/logout';" />
+					<h:commandLink value="Home" action="#{homeController.navigationHome()}" />
+					
+				</h:form> 
+		</div>
+		<div id="wrapper">
+			<div id="content">
+				<ui:insert name="content">Main Content</ui:insert>
+			</div>
+		</div>
+	
+	
+		<div id="footer">
+		  
+			Javier Alfaya JB225
+		  
+	    </div>
+    </div>
+
+
+	<!--  <div id="top" class="top">
+            <ui:insert name="top">Top Section</ui:insert>
+        </div>
+        <div>
+        <div id="left">
+             <ui:insert name="left">Left Section</ui:insert>
+        </div>
+        <div id="content" class="left_content">
+             <ui:insert name="content">Main Content</ui:insert>
+        </div>
+        </div> -->
+    </h:body>
+</html>

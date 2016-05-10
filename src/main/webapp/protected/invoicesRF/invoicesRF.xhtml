@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<ui:composition template="/protected/template/template.xhtml">
+
+		<ui:define name="content">
+
+    <h:head></h:head>
+			<rich:panel id="invoicePanel">
+				<f:facet name="header">
+					<h:outputText value="Invoices richFaces style" style="color:blue" />
+				</f:facet>
+
+				<h:form>
+					<rich:graphValidator value="#{invoiceController}" id="gv">
+						<h:panelGrid>
+							<h:outputText
+								value="Next field is validate into Backing Bean Method: invoiceController.validateCompanyName- Try write UNISYS "
+								style="color:blue" />
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel for="companyMane" value="Company mane:" />
+
+							<h:inputText value="#{invoiceController.aInvoice.companyName}"
+								validator="#{invoiceController.validateCompanyName}"
+								id="companyName">
+							</h:inputText>
+							<rich:message for="companyName" style="color:red" />
+						</h:panelGrid>
+						<h:panelGrid>
+							<h:outputText
+								value="Next field is validate as Required into h:inputText as required = true and requiredMessage "
+								style="color:blue" />
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel for="contactName" value="Contact mane:" />
+
+							<h:inputText value="#{invoiceController.aInvoice.contactName}"
+								required="true" requiredMessage="Contact mane is mandatory"
+								id="contactName">
+							</h:inputText>
+							<rich:message for="contactName" style="color:red" />
+						</h:panelGrid>
+
+						<h:panelGrid>
+							<h:outputText
+								value="Next field is validate as Range Validator into f:validateDoubleRange and also as required = true and requiredMessage and also is validate JSR-303 "
+								style="color:blue" />
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel for="amount" value="Amount:" />
+
+							<h:inputText value="#{invoiceController.aInvoice.amount}"
+								required="true" requiredMessage="Amount is mandatory"
+								id="amount">
+
+								<f:validateDoubleRange minimum="0.01" maximum="100000"></f:validateDoubleRange>
+								<rich:validator></rich:validator>
+							</h:inputText>
+							<rich:message for="amount" style="color:red" />
+						</h:panelGrid>
+
+						<h:panelGrid>
+							<h:outputText
+								value="Next field is validate as Range Validator into f:validateLongRange and also as required = true and requiredMessage and also is validate JSR-303 "
+								style="color:blue" />
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel for="numbersOfItemst" value="Number of items:" />
+
+							<h:inputText value="#{invoiceController.aInvoice.numbersOfItems}"
+								required="true" requiredMessage="Number of items is mandatory"
+								id="numbersOfItems">
+
+								<f:validateLongRange minimum="1" maximum="10"></f:validateLongRange>
+
+							</h:inputText>
+							<rich:message for="numbersOfItems" style="color:red" />
+						</h:panelGrid>
+
+						<h:panelGrid>
+							<h:outputText
+								value="Next field is validate use a Custom Validator Bean - validator.CustomValidator Fire when commments is equeal to comentario  "
+								style="color:blue" />
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel for="Comment" value="Comment:" />
+
+							<h:inputTextarea value="#{invoiceController.aInvoice.comments}"
+								id="comments">
+
+								<f:validator validatorId="commentsValidator"></f:validator>
+
+							</h:inputTextarea>
+							<rich:message for="comments" style="color:red" />
+						</h:panelGrid>
+
+
+
+						<h:panelGrid>
+
+
+							<a4j:commandButton id="register"
+								action="#{invoiceController.saveInvoice()}" value="Save"
+								execute="invoicePanel" render="invoicePanel" />
+
+						</h:panelGrid>
+
+						<rich:messages globalOnly="true"></rich:messages>
+						<h:panelGrid>
+
+							<h:outputText
+								value="Force graphValidator Type: COMPANY on Company Name and Numbers of item: 2"
+								style="color:red" />
+
+						</h:panelGrid>
+						<rich:messages for="gv" style="color:green" />
+
+
+
+					</rich:graphValidator>
+				</h:form>
+
+
+
+			</rich:panel>
+		</ui:define>
+	</ui:composition>
+
+</html>

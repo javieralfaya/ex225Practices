@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="/protected/template/template.xhtml">
+
+		<ui:define name="content">
+			<rich:panel id="step1Panel">
+
+				<f:facet name="header">
+					<h:outputText value="User Wizard Step 1: Get user name"
+						style="color:blue" />
+				</f:facet>
+				<fieldset>
+					<h:form>
+						<h:panelGrid columns="3">
+
+							<h:outputLabel value="User Name:" for="userName" />
+							<h:inputText value="#{userWizard.aUser.username}" required="true"
+								requiredMessage="User Name is mandatory " id="userName"
+								validator="#{userWizard.validateUser}" />
+							<rich:message for="userName" />
+
+						</h:panelGrid>
+
+
+						<a4j:commandButton
+							action="/protected/createUserWizard/richfaces/startUserCreate.xhtml?faces-redirect=true"
+							value="Previous Step" immediate="true"></a4j:commandButton>
+							
+						<a4j:commandButton action="#{userWizard.step2RichFaces()}"
+							value="Next Step"></a4j:commandButton>
+
+
+
+					</h:form>
+
+				</fieldset>
+
+
+			</rich:panel>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

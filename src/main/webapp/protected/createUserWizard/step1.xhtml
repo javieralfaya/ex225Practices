@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="/protected/template/template.xhtml">
+
+		<ui:define name="content">
+			<rich:panel>
+				<f:facet name="header">
+           			User Wizard
+        		</f:facet>
+				<h:outputText value="User Wizard Step 1: Get user name"
+					style="color:blue" />
+			</rich:panel>
+
+			<h:form>
+
+
+
+
+
+				<fieldset>
+					<h:panelGrid columns="2">
+						<h:panelGroup>
+							<h:outputLabel value="User Name:" for="userName" />
+
+							<h:inputText value="#{userWizard.aUser.username}" required="true"
+								requiredMessage="User Name is mandatory " id="userName"
+								validator="#{userWizard.validateUser}">
+
+							</h:inputText>
+
+							<h:message for="userName" style="color:red" />
+						</h:panelGroup>
+
+					</h:panelGrid>
+
+					<p>
+						<h:commandLink
+							action="/protected/createUserWizard/startUserCreate.xhtml"
+							value="Previous Step" immediate="true" />
+					</p>
+					<p>
+						<h:commandLink action="#{userWizard.step2()}" value="Next Step" />
+					</p>
+				</fieldset>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
