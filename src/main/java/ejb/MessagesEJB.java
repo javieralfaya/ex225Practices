@@ -7,6 +7,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -27,7 +28,7 @@ public class MessagesEJB implements MessagesEjbInterface {
     }
     
     
-    @PersistenceContext
+    @PersistenceContext(type = PersistenceContextType.EXTENDED)
     private EntityManager em;
     
     /* (non-Javadoc)
@@ -45,7 +46,7 @@ public class MessagesEJB implements MessagesEjbInterface {
     public List<Message> getMessagesList(){
     
     	CriteriaQuery<Message> aCriteria = em.getCriteriaBuilder().createQuery(Message.class);
-    	Root<Message> messageRoot = aCriteria.from( Message.class );
+    	Root<Message> messageRoot = aCriteria.from(Message.class);
     	return em.createQuery(aCriteria).getResultList();
     	
     	

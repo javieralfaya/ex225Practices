@@ -5,21 +5,18 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import model.User;
-import qualifiers.MyInterceptorBinding;
 
 /**
  * Session Bean implementation class UserEjb
  */
 @Stateless
 @LocalBean
-@TransactionAttribute
 public class UserEjb implements UserEjbInterface {
 
     /**
@@ -36,21 +33,18 @@ public class UserEjb implements UserEjbInterface {
 	 * @see ejb.UserEjbInterface#createUser(model.User)
 	 */
     @Override
-	public User createUser(User anUser) {
-    	
-    	em.persist(anUser);
-		return anUser;
+	public User createUser(User aUser) {
+    	em.persist(aUser);
+		return aUser;
 	}
     
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     @Named("usersList")
     @Produces
 	public List<User> listUsers() {
     	List<User> aListUser = new ArrayList<User>();
     	aListUser = em.createNamedQuery("User.findAll").getResultList();
-    	 
-    	
-    	
 		return aListUser;
 	}
     
@@ -71,10 +65,10 @@ public class UserEjb implements UserEjbInterface {
     @Override
     public User findUser(User anUser){
     	
+    	User aUserGet = new User();
+    	aUserGet = em.find(User.class, anUser.getUsername());
     	
-    	anUser = em.find(User.class, anUser.getUsername());
-    	
-    	return anUser;
+    	return aUserGet;
     	
     	
     }

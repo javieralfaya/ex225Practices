@@ -9,72 +9,49 @@
 
 <h:body>
 	<ui:composition template="/protected/template/template.xhtml">
-
 		<ui:define name="content">
 			<rich:panel id="step2Panel">
-
 				<f:facet name="header">
 					<h:outputText
 						value="User Wizard Step 2 RF: Get user password and Role"
 						style="color:blue" />
 				</f:facet>
-				
-					<h:form>
-						<h:panelGrid columns="3">
+			</rich:panel>
+			<h:form>
+				<fieldset>
+					<h:panelGrid columns="3">
+						<h:outputLabel value="User Name:" for="userName" />
+						<h:outputText value="#{userWizard.aUser.username}" />
+					</h:panelGrid>
 
-							<h:outputLabel value="User Name:" for="userName" />
-							<h:outputText value="#{userWizard.aUser.username}" />
+					<h:panelGrid columns="3">
+						<h:outputLabel value="User Password:" for="password" />
+						<h:inputText value="#{userWizard.aUser.password}" required="true"
+							requiredMessage="password is mandatory" id="password">
+							<f:validateLength minimum="10" for="password" />
+						</h:inputText>
+						<rich:message for="password" />
+					</h:panelGrid>
 
+					<h:panelGrid columns="3">
+						<h:outputText value="Select role for user" />
+						<rich:select required="true" value="#{userWizard.userRole}"
+							requiredMessage="Role is Mandatory" id="role">
+							<f:selectItems value="#{listRoles}" var="role"
+								itemLabel="#{role.rolename}" itemValue="#{role.rolename}" />
+						</rich:select>
+						<rich:message for="role" />
+					</h:panelGrid>
 
-						</h:panelGrid>
-
-						<h:panelGrid columns="3">
-
-							<h:outputLabel value="User Password:" for="password" />
-							<h:inputText value="#{userWizard.aUser.password}" required="true"
-								requiredMessage="password is mandatory" id="password">
-								<f:validateLength minimum="10" for="password" />
-							</h:inputText>
-
-							<rich:message for="password" />
-
-
-
-						</h:panelGrid>
-
-                            
-					
-						<rich:panel style="width:220px;">
-							<f:facet name="header">
-								<h:outputText value="Select role for user" />
-							</f:facet>
-							<rich:select enableManualInput="true" required="true"
-								value="#{userWizard.userRole}"
-								requiredMessage="Role is Mandatory" id="role">
-								<f:selectItems value="#{listRoles}" var="role"
-									itemLabel="#{role.rolename}" itemValue="#{role.rolename}" />
-							</rich:select>
-							<rich:message for="role" />
-						</rich:panel>
-
-
-					
-
+					<h:panelGrid columns="3">
 						<a4j:commandButton
 							action="#{userWizard.startConversationRichFaces()}"
 							value="Previous Step" immediate="true"></a4j:commandButton>
-						 
-						<a4j:commandButton execute="@form" action="#{userWizard.finalStepRf()}"
+						<a4j:commandButton action="#{userWizard.finalStepRf()}"
 							value="Next Step"></a4j:commandButton>
-
-
-					</h:form>
-
-			
-
-
-			</rich:panel>
-
+					</h:panelGrid>
+				</fieldset>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>

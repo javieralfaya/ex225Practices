@@ -10,9 +10,9 @@
       <jta-data-source>java:jboss/datasources/ApplicationDS</jta-data-source>
       <!-- <class>model.Message</class> -->
       <class>model.Message</class>
+      <class>model.Messagesjm</class>
       <class>model.Role</class>
       <class>model.User</class>
-      <class>model.Messagesjm</class>
 
       <properties>
          <!-- Properties for Hibernate -->

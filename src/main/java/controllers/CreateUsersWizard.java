@@ -113,13 +113,21 @@ public class CreateUsersWizard implements Serializable {
 			
 		}
 		
+	
+	
+    	
+    	Role aRole = new Role();
+		aRole.setRolename(userRole);
+		
 		List<Role> aListRoles = new ArrayList<Role>();
+		aListRoles.add(aRole);
+		
 		List<User> aListUser = new ArrayList<User>();
 		aListUser.add(aUser);
-		Role aRole = new Role();
-		aRole.setRolename(getUserRole());
+		
 		aRole.setUsers(aListUser);
 		aUser.setRoles(aListRoles);
+		
 		
 		aUserEjb.createUser(aUser);
 		

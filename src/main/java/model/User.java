@@ -21,7 +21,7 @@ public class User implements Serializable {
 	private String password;
 
 	//bi-directional many-to-many association to Role
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name="users_roles"
 		, joinColumns={
