@@ -17,11 +17,15 @@
 						style="color:blue" />
 				</f:facet>
 			</rich:panel>
-			<h:form>
-				<fieldset>
-					<h:panelGrid columns="3">
+			
+				<h:form>
+				
+				<rich:panel id="panel">
+
+					<h:panelGrid columns="3" style="color:blue">
 						<h:outputLabel value="User Name:" for="userName" />
-						<h:outputText value="#{userWizard.aUser.username}" />
+						<h:outputText value="#{userWizard.aUser.username}"
+							style="color:blue" />
 					</h:panelGrid>
 
 					<h:panelGrid columns="3">
@@ -33,7 +37,7 @@
 						<rich:message for="password" />
 					</h:panelGrid>
 
-					<h:panelGrid columns="3">
+					<h:panelGrid>
 						<h:outputText value="Select role for user" />
 						<rich:select required="true" value="#{userWizard.userRole}"
 							requiredMessage="Role is Mandatory" id="role">
@@ -44,14 +48,15 @@
 					</h:panelGrid>
 
 					<h:panelGrid columns="3">
-						<a4j:commandButton
-							action="#{userWizard.startConversationRichFaces()}"
-							value="Previous Step" immediate="true"></a4j:commandButton>
-						<a4j:commandButton action="#{userWizard.finalStepRf()}"
-							value="Next Step"></a4j:commandButton>
+					    <h:commandButton value="Previous Step"  action="#{userWizard.startConversationRichFaces()}" immediate="true"/>
+					    <a4j:commandButton value="Next Step" type="button" action="#{userWizard.finalStepRf()}"/>
+						
+						<!-- <h:commandButton action="#{userWizard.finalStepRf()}"
+							value="Next Step" /> -->
 					</h:panelGrid>
-				</fieldset>
-			</h:form>
+				</rich:panel>
+				</h:form>
+			
 		</ui:define>
 	</ui:composition>
 </h:body>
