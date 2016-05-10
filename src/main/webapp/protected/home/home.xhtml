@@ -19,6 +19,7 @@
 	
 	<fieldset>
 	     <h:form>
+	          
 	         <h:panelGrid columns="2">
 		    	<h:outputText value="Validation Example" />
 		    	<h:commandLink action="/protected/invoices/invoices.xhtml" value=" - Example of all validation methods JSF Invoice Form Example" style="color:blue;"/>
@@ -37,11 +38,16 @@
 		    </h:panelGrid>   
 		     <h:panelGrid columns="2">
 		    	<h:outputText value="WSDL - SOA Service" />
-		    	<h:commandLink action="/protected/createUserWizard/startUserCreate.xhtml" value="WSDL" style="color:blue;"/>
+		    	<h:outputLink value="#{root}/FindUser?wsdl" style="color:blue;" target="_blank">
+		    		SOA - Service WSDL
+		    	</h:outputLink>
 		    </h:panelGrid>     
 		     <h:panelGrid columns="2">
 		    	<h:outputText value="REST - SOA Service" />
-		    	<h:commandLink action="/protected/createUserWizard/startUserCreate.xhtml" value="REST example text-plain get user" style="color:blue;" />
+		    	<h:outputLink value="#{root}/res/users/user/admin" style="color:blue;" target="_blank">
+		    		Rest - Example Get User
+		    	</h:outputLink>
+		   
 		    </h:panelGrid>  
 		     <h:panelGrid columns="2">
 		    	<h:outputText value="Send Message P2P" />
